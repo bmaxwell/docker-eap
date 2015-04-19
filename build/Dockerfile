@@ -3,31 +3,22 @@ FROM trogers/fedora:f20
 MAINTAINER Travis Rogers <travis@redhat.com>
 
 # Copy the EAP to image, unpack and clean up afterwards
-ADD jboss-eap-6.2.3-layer.zip /opt/
-RUN unzip -q /opt/jboss-eap-6.2.3-layer.zip -d /
-
-# Remove unneeded zip files
-RUN rm /opt/jboss-eap*.zip
+ADD jboss-eap-layer.tgz /
 
 RUN groupadd -r jboss && \
-useradd -r -g jboss -d /opt/jboss-eap-6.2 -s /sbin/nologin -c "JBoss user" jboss && \
-chown -R jboss:jboss /opt/jboss-eap-6.2
+useradd -r -g jboss -d /opt/jboss-eap -s /sbin/nologin -c "JBoss user" jboss && \
+chown -R jboss:jboss /opt/jboss-eap
 
 # Add a default admin user
-RUN ["/opt/jboss-eap-6.2/bin/add-user.sh", "--silent=true", "admin", "1Redhat;"]
+RUN ["/opt/jboss-eap/bin/add-user.sh", "--silent=true", "admin", "1Redhat;"]
 
 # Link the EAP installation
-RUN ln -s /opt/jboss-eap-6.2 /eap
-
-# Add the launch script
-# ADD launch /opt/jboss-eap-6.2/bin/
-#
-# duplicated by create.sh script adding launch.sh
+RUN ln -s /opt/jboss-eap /eap
 
 USER jboss
 
 # Expose ports
-EXPOSE 4447 8080 9990 9999
+EXPOSE 3528 3529 4447 5445 5455 8009 8080 8443 9443 9876 9990 9999
 
 # Specify default values for entry point
 CMD ["/eap/bin/launch.sh", "standalone", "-c", "standalone-ha.xml", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]

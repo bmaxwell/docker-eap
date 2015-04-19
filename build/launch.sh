@@ -28,7 +28,7 @@ else
 fi
 
 # need to allow this to be variable
-JBOSS_HOME=/opt/jboss-eap-6.2
+JBOSS_HOME=/opt/jboss-eap
 
 shift 1
 
