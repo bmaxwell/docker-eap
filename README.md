@@ -26,13 +26,12 @@ Build docker container:
 
 ## Running
 
-Standalone:
-
-Run a standalone container:
+Standalone container:
 
 	sudo docker run -ti --rm --name FOO porkchop_eap_640
 
 -ti 
+
 Running interactive with a TTY attached.  Could execute as detached processes using -d.  This would require a subsequent 'docker stop' command to shutdown a container.
 
 --rm
