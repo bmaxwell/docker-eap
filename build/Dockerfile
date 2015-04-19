@@ -1,4 +1,5 @@
 FROM trogers/fedora:f20
+# Make the above Fedora image yourself - https://github.com/travisrogers05/docker-fedora
 
 MAINTAINER Travis Rogers <travis@redhat.com>
 
@@ -10,7 +11,7 @@ useradd -r -g jboss -d /opt/jboss-eap -s /sbin/nologin -c "JBoss user" jboss && 
 chown -R jboss:jboss /opt/jboss-eap
 
 # Add a default admin user
-RUN ["/opt/jboss-eap/bin/add-user.sh", "--silent=true", "admin", "1Redhat;"]
+RUN ["/opt/jboss-eap/bin/add-user.sh", "--silent=true", "admin", "1@dM1n$;"]
 
 # Link the EAP installation
 RUN ln -s /opt/jboss-eap /eap
