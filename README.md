@@ -8,7 +8,8 @@ Below you can find instructions on how to build and use the image.
 
 You must have Docker installed. 
 
-Clean all unused containers and images:
+Clean all unused containers and images: 
+
 	build/bin/docker-rmiu
 	build/bin/docker-rmc
 
