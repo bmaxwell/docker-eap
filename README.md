@@ -1,8 +1,4 @@
-This framework creates a Docker image that contains JBoss EAP.
-
-# Usage
-
-Below you can find instructions on how to build and use the image.
+This framework creates a JBoss EAP Docker container.
 
 ## Preparations
 
