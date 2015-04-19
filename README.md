@@ -26,7 +26,7 @@ Build docker container:
 
 ## Running
 
-##### Standalone:
+#### Standalone:
 
 	sudo docker run -ti --rm --name FOO porkchop_eap_640
 
@@ -46,7 +46,7 @@ The container has a default CMD that starts a standalone instance.  No further o
 
 
 
-##### Domain:
+#### Domain:
 
 The domain controller and hosts can be started so they use mounted directories from the host as key JBoss EAP directories.  In this example, the `$JBOSS_HOME/domain/configuration` directory for each domain instance point to specific directories on the host.  The provides one alternative to a flexible configuration.
 
