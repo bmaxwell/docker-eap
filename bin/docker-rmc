@@ -1,0 +1,4 @@
+#/bin/bash
+
+# remove all stopped containers
+sudo docker rm $(sudo docker ps -a -q)

@@ -1,0 +1,4 @@
+#/bin/bash
+
+# remove all images with name=<none> and tag=<none>
+sudo docker rmi $(sudo docker images | awk '/^<none>/ {print $3}')
