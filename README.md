@@ -16,10 +16,12 @@ Clean all unused containers and images:
 ## Building
 
 Prepare JBoss EAP archive:
+
 	cd build
 	./create.sh
 
 Build docker container:
+
 	sudo docker build --rm -t porkchop_eap_640 .
 
 ## Running
@@ -27,9 +29,10 @@ Build docker container:
 Standalone:
 
 Run a standalone container:
+
 	sudo docker run -ti --rm --name FOO porkchop_eap_640
 
--ti
+-ti 
 Running interactive with a TTY attached.  Could execute as detached processes using -d.  This would require a subsequent 'docker stop' command to shutdown a container.
 
 --rm
