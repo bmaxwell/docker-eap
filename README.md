@@ -100,7 +100,7 @@ Run HC2:
 **--link DC:HC2** - Linking this container to the running DC container for networking visibility.
 
 
-**-Djboss.domain.master.address=<IPofDC>** - This tells this host where the domain controller resides.  The IP address of the domain controller can be found using `docker inspecti` on the DC container.
+**-Djboss.domain.master.address=<IPofDC>** - This tells this host where the domain controller resides.  The IP address of the domain controller can be found using `docker inspect` on the DC container.
 
 
 ## Stopping
