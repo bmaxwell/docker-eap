@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This file is added to the EAP tarball build.
+# It acts as the docker container CMD target.
+
 if [ $# -lt 1 ]; then
   echo "Usage: $0 <configuration> [options]"
   echo

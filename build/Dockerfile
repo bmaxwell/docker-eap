@@ -1,16 +1,20 @@
-FROM trogers/fedora:f20
-# Make the above Fedora image yourself - https://github.com/travisrogers05/docker-fedora
+FROM fedora:21
+
+# Using the Fedora 21 base image from the Docker registry.
+# You could create your own Fedora base image.  One approach can be found here - https://github.com/travisrogers05/docker-fedora.
+# If you would rather not use Docker registry, you can use the docker base image provided by the Fedora project - https://spins.fedoraproject.org/docker/.
 
 MAINTAINER Travis Rogers <travis@redhat.com>
 
-# Copy the EAP to image, unpack and clean up afterwards
+# Load the EAP installation to the container. Unpack and clean up afterwards
 ADD jboss-eap-layer.tgz /
 
+# Add a user to run EAP
 RUN groupadd -r jboss && \
 useradd -r -g jboss -d /opt/jboss-eap -s /sbin/nologin -c "JBoss user" jboss && \
 chown -R jboss:jboss /opt/jboss-eap
 
-# Add a default admin user
+# Add a default admin user for EAP
 RUN ["/opt/jboss-eap/bin/add-user.sh", "--silent=true", "admin", "1@dM1n$;"]
 
 # Link the EAP installation

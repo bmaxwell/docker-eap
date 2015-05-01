@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Should be executed from the build directory
+# Used to build a basic JBoss EAP 6.4.0 gzipped tarball. 
+# Should be executed from the build directory.
 
 CURRENTDIR=`dirname $0`
 BUILDDIR=$CURRENTDIR/tmp-build-dir
