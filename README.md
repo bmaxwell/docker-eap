@@ -2,7 +2,7 @@ This framework creates a JBoss EAP Docker container.
 
 ## Preparations
 
-You must have Docker installed. 
+You must have Docker installed and access to Porkchop. 
 
 Clean all unused containers and images: 
 
