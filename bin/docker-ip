@@ -1,3 +1,5 @@
 #!/bin/sh
 
+# Returns the IP address of a running container
+# usage: docker-ip ID|NAME
 exec docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
