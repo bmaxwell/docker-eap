@@ -6,6 +6,12 @@ FROM fedora:21
 
 MAINTAINER Travis Rogers <travis@redhat.com>
 
+# Execute system update
+RUN yum -y update && yum clean all
+
+# Install packages necessary to run EAP
+RUN yum -y install xmlstarlet saxon augeas bsdtar unzip java-1.8.0-openjdk-devel && yum clean all
+
 # Load the EAP installation to the container. Unpack and clean up afterwards
 ADD jboss-eap-layer.tgz /
 
