@@ -9,8 +9,8 @@ MAINTAINER Travis Rogers <travis@redhat.com>
 # Execute system update
 RUN yum -y update && yum clean all
 
-# Install packages necessary to run EAP
-RUN yum -y install xmlstarlet saxon augeas bsdtar unzip java-1.8.0-openjdk-devel && yum clean all
+# Install packages necessary to run EAP and useful packages
+RUN yum -y install bind-utils net-tools hostname iputils curl xmlstarlet saxon augeas bsdtar unzip java-1.8.0-openjdk-devel && yum clean all
 
 # Load the EAP installation to the container. Unpack and clean up afterwards
 ADD jboss-eap-layer.tgz /
@@ -34,4 +34,3 @@ EXPOSE 3528 3529 4447 5445 5455 8009 8080 8443 9443 9876 9990 9999
 # Specify default values for entry point
 CMD ["/eap/bin/launch.sh", "standalone", "-c", "standalone-ha.xml", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
 # ENTRYPOINT ["/eap/bin/launch.sh", "standalone", "-c", "standalone-ha.xml", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
-

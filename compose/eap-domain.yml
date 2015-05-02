@@ -1,0 +1,31 @@
+
+#
+# Docker Compose file that creates a JBoss EAP domain environment
+# with a single domain controller and two hosts in a server group
+#
+
+HC1:
+  image: porkchop_eap_640
+  volumes:
+   - /u02/dev/docker/eap-dc-test/hc1/configuration:/opt/jboss-eap/domain/configuration
+  links:
+   - DC
+  command: /eap/bin/launch.sh domain -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.domain.master.address=DC
+
+HC2:
+  image: porkchop_eap_640
+  volumes:
+   - /u02/dev/docker/eap-dc-test/hc2/configuration:/opt/jboss-eap/domain/configuration
+  links:
+   - DC
+  command: /eap/bin/launch.sh domain -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.domain.master.address=DC
+
+DC:
+  image: porkchop_eap_640
+  ports:
+   - "18080:8080"
+   - "19990:9990"
+   - "19999:9990"
+  volumes:
+   - /u02/dev/docker/eap-dc-test/dc/configuration:/opt/jboss-eap/domain/configuration
+  command: /eap/bin/launch.sh domain -b 0.0.0.0 -bmanagement 0.0.0.0

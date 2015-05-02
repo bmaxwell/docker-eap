@@ -2,9 +2,9 @@ This framework creates a JBoss EAP Docker container.
 
 ## Preparations
 
-You must have Docker installed and access to Porkchop. 
+You must have Docker installed and access to Porkchop.
 
-Clean all unused containers and images: 
+Clean all unused containers and images:
 
 	build/bin/docker-rmiu
 	build/bin/docker-rmc
@@ -44,6 +44,14 @@ The container has a default CMD that starts a standalone instance.  No further o
 
 #### Domain:
 
+
+##### Automated using Docker Compose
+
+Refer to the [compose/eap-domain.yml](compose/eap-domain.yml) file and instructions for use.
+
+
+##### Manual
+
 The domain controller and hosts can be started so they use mounted directories from the host as key JBoss EAP directories.  In this example, the `$JBOSS_HOME/domain/configuration` directory for each domain instance point to specific directories on the host.  The provides one alternative to a flexible configuration.
 
 
@@ -81,7 +89,7 @@ Run HC1:
 **--link DC:HC1** - Linking this container to the running DC container for networking visibility.
 
 
-**-Djboss.domain.master.address=<IPofDC>** - This tells this host where the domain controller resides.  The IP address of the domain controller can be found using `docker inspect` on the DC container.
+**-Djboss.domain.master.address=DC** - Set the domain controller address for this host container.  This host container is linked with the DC container and will be able to resolve the IP address of the DC container.
 
 
 
@@ -96,7 +104,7 @@ Run HC2:
 **--link DC:HC2** - Linking this container to the running DC container for networking visibility.
 
 
-**-Djboss.domain.master.address=<IPofDC>** - This tells this host where the domain controller resides.  The IP address of the domain controller can be found using `docker inspect` on the DC container.
+**-Djboss.domain.master.address=DC** - Set the domain controller address for this host container.  This host container is linked with the DC container and will be able to resolve the IP address of the DC container.
 
 
 ## Stopping
@@ -114,5 +122,3 @@ Get the IP address of a running container:
 Connecting to the domain controller via CLI:
 
     bin/jboss-cli.sh --controller=172.17.0.12:9999 -c
-
-
