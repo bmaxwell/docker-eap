@@ -80,7 +80,7 @@ The remainder of the command line is passed to the container to override the Doc
 
 Run HC1:
 
-	sudo docker run -ti --rm --name HC1 --link DC:HC1 -v /docker-eap64/hc1/configuration:/opt/jboss-eap/domain/configuration porkchop_eap_640 /eap/bin/launch.sh domain -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.domain.master.address=<IPofDC>
+	sudo docker run -ti --rm --name HC1 --link DC:HC1 -v /docker-eap64/hc1/configuration:/opt/jboss-eap/domain/configuration porkchop_eap_640 /eap/bin/launch.sh domain -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.domain.master.address=DC
 
 
 **--name HC1** - Give this container a unique name.
@@ -95,7 +95,7 @@ Run HC1:
 
 Run HC2:
 
-	sudo docker run -ti --rm --name HC2 --link DC:HC2 -v /docker-eap64/hc2/configuration:/opt/jboss-eap/domain/configuration porkchop_eap_640 /eap/bin/launch.sh domain -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.domain.master.address=<IPofDC>
+	sudo docker run -ti --rm --name HC2 --link DC:HC2 -v /docker-eap64/hc2/configuration:/opt/jboss-eap/domain/configuration porkchop_eap_640 /eap/bin/launch.sh domain -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.domain.master.address=DC
 
 
 **--name HC2** - Give this container a unique name.
