@@ -8,6 +8,7 @@ This directory contains Docker Compose files to simulate different scenarios.
 ## Files
 
 [eap-domain.yml](eap-domain.yml):
+
 Docker Compose file that creates a JBoss EAP domain environment with a single domain controller and two hosts in a server group.
 
 
